@@ -112,5 +112,12 @@ public class IdentityRegistryTest extends TestCase {
         IonMessage msgin2 = baseProcess.rpcSend(identRegSvc, "verify_registration", content);
         assertFalse(msgin2.isErrorMessage());
         baseProcess.ackMessage(msgin2);
+
+        System.out.println("\nSTEP: Authenticate user");
+
+        // Create and send request message
+        IonMessage msgin3 = baseProcess.rpcSend(identRegSvc, "authenticate_user_credentials", content);
+        assertFalse(msgin3.isErrorMessage());
+        baseProcess.ackMessage(msgin2);
     }
 }
